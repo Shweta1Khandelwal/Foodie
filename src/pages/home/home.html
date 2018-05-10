@@ -1,14 +1,45 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+    <ion-navbar>
+      <ion-title>
+        KFC'S MENU
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+   
+  <ion-content>
+    <ion-list class="accordion-list">
+      <!-- First Level -->
+      <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding>
+        <!-- Toggle Button -->
+        <button ion-item (click)="toggleSection(i)"  detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+          <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
+          <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
+            {{ item.name }}
+        </button>
+   
+        <ion-list *ngIf="item.children && item.open" no-lines>
+          <!-- Second Level -->
+          <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>
+            <!-- Toggle Button -->
+            <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>
+              <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
+              <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
+              {{ child.name }}
+            </button>
+   
+            <!-- Direct Add Button as Fallback -->
+            <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
+                <h2 text-lowercase >{{ child.name}}</h2>
+              <img src  ="{{ child.URL }}" height="50%" width="100%">
+              <h2 text-lowercase >{{ child.price }}</h2>
+              
+            </ion-item>
+   
+            
+   
+          </ion-list-header>
+        </ion-list>
+        
+      </ion-list-header>
+    </ion-list>
+  </ion-content>
