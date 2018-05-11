@@ -5,7 +5,7 @@ page-home {
     }
     .section {
         background: #FF6F00;
-        color: #000;
+        color: #fff;
         margin-bottom: 4px;
     }
     .section-active {
@@ -15,19 +15,32 @@ page-home {
  
     .child {
         background: #e8e7e6;
-        color: #000;
+        color: #fff;
         margin-bottom: 4px;
     }
     .child-item {
         background: #f3f2f1;
         padding: 10px;
-        position: relative
+        position: relative;
+        width: 100%;
         
     }
+    h2 { 
+        position: absolute; 
+        color:#fff;
+        left: 0; 
+        width: 100%; 
+        font-family: 'Times New Roman';
+        font-size: 40;
+       
+     }
+
+
     .label {
         margin: 0px;
     }
     .list {
         margin-bottom: 4px;
     }
+    
 }
